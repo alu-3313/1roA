@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Día de la Primavera — 1ro A</title>
+  <meta name="description" content="Bienvenida al Día de la Primavera de 1ro A">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- capa decorativa de pétalos/mariposas flotantes, generada por JS -->
+  <div class="floaties" aria-hidden="true"></div>
+
+  <header id="hero" class="section hero">
+    <div class="decor-layer" data-decor="hero"></div>
+    <p class="eyebrow">1ro A te da la bienvenida</p>
+    <h1 class="hero-title" data-easter="hero" tabindex="0">
+      ¡Feliz Día de la Primavera! 🌸
+    </h1>
+    <p class="hero-hint">(tocá el título ✨)</p>
+    <div class="secret-card" data-reveal="hero">
+      <p>Psst… 🌼 esta primavera nos tocó decorar el salón con Monsters, Inc. y Ratatouille, así que además de flores vas a encontrar monstruitos y ratoncitos escondidos por toda la página. ¡Suerte encontrándolos a todos! 🧀👹</p>
+    </div>
+  </header>
+
+  <section id="welcome" class="section welcome">
+    <div class="decor-layer" data-decor="welcome"></div>
+    <h2>¡Hola! 👋</h2>
+    <p>
+      Somos 1ro A y armamos esta página para compartir con toda la escuela
+      nuestra alegría por la llegada de la primavera 🌷. Este año nos tocó
+      ambientar el salón con la temática de <strong>Monsters, Inc.</strong> y
+      <strong>Ratatouille</strong>, así que mezclamos flores con monstruos
+      simpáticos y algún que otro chef ratón. Esperamos que disfruten
+      escaneando este QR tanto como nosotros armando todo esto. ¡Feliz día! 💛
+    </p>
+  </section>
+
+  <section id="countdown" class="section countdown">
+    <div class="decor-layer" data-decor="countdown"></div>
+    <h2>Cuenta regresiva 🌻</h2>
+    <div id="countdown-root" class="countdown-root pre">
+      <div class="countdown-numbers">
+        <div class="cd-block">
+          <span id="cd-days" class="cd-num">00</span>
+          <span class="cd-label">días</span>
+        </div>
+        <div class="cd-block">
+          <span id="cd-hours" class="cd-num">00</span>
+          <span class="cd-label">hs</span>
+        </div>
+        <div class="cd-block">
+          <span id="cd-minutes" class="cd-num">00</span>
+          <span class="cd-label">min</span>
+        </div>
+        <div class="cd-block">
+          <span id="cd-seconds" class="cd-num">00</span>
+          <span class="cd-label">seg</span>
+        </div>
+      </div>
+      <p id="cd-message" class="cd-message">Faltan para la Primavera...</p>
+    </div>
+  </section>
+
+  <section id="students" class="section students">
+    <div class="decor-layer" data-decor="students"></div>
+    <h2 data-easter="students" tabindex="0">Nuestro curso 🌱</h2>
+    <ul id="students-list" class="students-list"></ul>
+    <div class="secret-card" data-reveal="students">
+      <p>🎉 ¡Encontraste el secreto de la lista! Cada uno de nosotros puso
+      su granito de arena (y algún tornillo, cartulina y mucho glitter) para
+      esta decoración. ¡Gracias por pasar a saludar!</p>
+    </div>
+  </section>
+
+  <footer class="section footer">
+    <div class="decor-layer" data-decor="footer"></div>
+    <p>Hecho con 🌸 por 1ro A</p>
+    <p class="footer-secret" data-easter="footer" tabindex="0">🐭</p>
+    <div class="secret-card" data-reveal="footer">
+      <p>¡Ratatouille y Monsters, Inc. aprueban esta página! 🧀👹 Gracias por
+      llegar hasta acá abajo. Nos vemos en el salón decorado. 🌷</p>
+    </div>
+  </footer>
+
+  <!-- lightbox para agrandar las imágenes decorativas -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button type="button" class="lightbox-close" aria-label="Cerrar">✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

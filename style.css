@@ -1,0 +1,383 @@
+:root {
+  --pink: #ffd1dc;
+  --pink-deep: #f5a7c2;
+  --mint: #c8f4de;
+  --mint-deep: #9de6bd;
+  --yellow: #fff3b0;
+  --lavender: #e0d4f7;
+  --lavender-deep: #c9b6f0;
+  --cream: #fffaf3;
+  --ink: #4a3f55;
+  --ink-soft: #7a6f87;
+
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Quicksand', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  margin: 0 0 .5em;
+}
+
+p { line-height: 1.5; }
+
+/* ---------- layout ---------- */
+
+.section {
+  position: relative;
+  padding: 3.5rem 1.25rem 2.5rem;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(160deg, var(--pink) 0%, var(--lavender) 55%, var(--mint) 100%);
+  padding-top: 2rem;
+}
+
+.welcome {
+  background: var(--cream);
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.countdown {
+  background: linear-gradient(160deg, var(--yellow) 0%, var(--pink) 100%);
+  text-align: center;
+}
+
+.students {
+  background: var(--cream);
+  text-align: center;
+}
+
+.footer {
+  background: linear-gradient(160deg, var(--lavender) 0%, var(--mint) 100%);
+  text-align: center;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 600px) {
+  .welcome, .countdown-root, .students-list { max-width: 560px; margin-left: auto; margin-right: auto; }
+}
+
+/* ---------- hero ---------- */
+
+.eyebrow {
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  font-size: .8rem;
+  margin-bottom: .5rem;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  line-height: 1.15;
+  max-width: 20ch;
+  cursor: pointer;
+  user-select: none;
+  transition: transform .2s ease;
+}
+
+.hero-title:active { transform: scale(0.96); }
+
+.hero-hint {
+  font-size: .85rem;
+  color: var(--ink-soft);
+  margin-top: .25rem;
+}
+
+@media (min-width: 480px) {
+  .hero-title { font-size: 2.8rem; }
+}
+
+/* ---------- secret / easter egg cards ---------- */
+
+.secret-card {
+  margin-top: 1.25rem;
+  max-width: 420px;
+  background: #ffffffcc;
+  border: 2px dashed var(--pink-deep);
+  border-radius: 18px;
+  padding: 1rem 1.25rem;
+  font-size: .95rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  transition: max-height .5s ease, opacity .4s ease, padding .5s ease, margin .5s ease;
+}
+
+.secret-card.revealed {
+  max-height: 240px;
+  opacity: 1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 1.25rem;
+}
+
+[data-easter] { position: relative; }
+
+/* ---------- countdown ---------- */
+
+.countdown-numbers {
+  display: flex;
+  justify-content: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+
+.cd-block {
+  background: #ffffffcc;
+  border-radius: 16px;
+  padding: .8rem .6rem;
+  min-width: 68px;
+  box-shadow: 0 4px 14px rgba(74, 63, 85, .12);
+}
+
+.cd-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.cd-label {
+  display: block;
+  font-size: .7rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.cd-message {
+  margin-top: 1.25rem;
+  font-weight: 600;
+}
+
+.countdown-root.today .cd-block {
+  animation: pulse 1.2s ease-in-out infinite;
+  background: var(--yellow);
+}
+
+.countdown-root.post .countdown-numbers { display: none; }
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+/* ---------- students ---------- */
+
+.students-list {
+  list-style: none;
+  margin: 1.5rem auto 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.students-list li {
+  background: #ffffffcc;
+  border-radius: 999px;
+  padding: .4rem 1rem;
+  font-weight: 600;
+  font-size: .9rem;
+  box-shadow: 0 2px 8px rgba(74, 63, 85, .1);
+}
+
+/* ---------- footer ---------- */
+
+.footer-secret {
+  display: inline-block;
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-top: .5rem;
+  transition: transform .2s ease;
+}
+
+.footer-secret:active { transform: scale(1.3) rotate(10deg); }
+
+/* ---------- decorative scattered stickers ---------- */
+
+/* hero has plenty of empty vertical space (92vh, content centered) so its
+   stickers float free in the corners without ever touching the text */
+.hero .decor-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* every other section is only as tall as its content, so free-floating
+   stickers would drift into the text on short viewports or longer copy
+   (real student lists, etc). Instead they sit in normal flow as a taped-on
+   strip above the section's content, guaranteeing no overlap. */
+.welcome .decor-layer,
+.countdown .decor-layer,
+.students .decor-layer,
+.footer .decor-layer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+  max-width: 340px;
+  margin: 0 auto 1.25rem;
+}
+
+.decor-img {
+  width: clamp(56px, 16vw, 90px);
+  height: clamp(56px, 16vw, 90px);
+  object-fit: cover;
+  border-radius: 14px;
+  border: 3px solid #fff;
+  box-shadow: 0 6px 16px rgba(74, 63, 85, .18);
+  pointer-events: auto;
+  cursor: pointer;
+  transform: rotate(var(--rot, 0deg));
+  transition: transform .25s ease;
+}
+
+.hero .decor-img {
+  position: absolute;
+  width: clamp(64px, 18vw, 110px);
+  height: clamp(64px, 18vw, 110px);
+}
+
+.decor-img:hover,
+.decor-img:focus-visible {
+  transform: rotate(var(--rot, 0deg)) scale(1.08);
+}
+
+.decor-img:active {
+  transform: rotate(var(--rot, 0deg)) scale(0.95);
+}
+
+/* content sits above the (absolutely positioned) hero decor layer */
+.hero > *:not(.decor-layer) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- floating petals ---------- */
+
+.floaties {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  bottom: -10vh;
+  font-size: 1.6rem;
+  pointer-events: auto;
+  cursor: pointer;
+  animation-name: float;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  will-change: transform, opacity;
+}
+
+.petal.popped {
+  animation: pop .4s ease forwards !important;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-120vh) translateX(var(--drift, 40px)) rotate(360deg); opacity: 0; }
+}
+
+@keyframes pop {
+  0%   { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* ---------- lightbox ---------- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(74, 63, 85, .85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .4);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #fff;
+  border: none;
+  border-radius: 999px;
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .petal, .countdown-root.today .cd-block { animation: none !important; }
+  .section { transition: none; opacity: 1; transform: none; }
+}
