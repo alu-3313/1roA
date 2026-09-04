@@ -182,7 +182,7 @@ function updateCountdown() {
   }
 }
 
-const PETAL_EMOJIS = ['🌸', '🌷', '🦋', '🌼', '✨'];
+const PETAL_EMOJIS = ['🌸', '🌷', '🍀', '🌼', '✨', '🍃'];
 const MAX_PETALS = 10;
 
 function spawnPetal() {
