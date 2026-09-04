@@ -205,19 +205,46 @@ p { line-height: 1.5; }
   list-style: none;
   margin: 1.5rem auto 0;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: .5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  gap: .45rem;
+  align-items: start;
 }
 
 .students-list li {
   background: #ffffffcc;
-  border-radius: 999px;
-  padding: .4rem 1rem;
-  font-weight: 600;
-  font-size: .9rem;
+  border: 1px solid rgba(245, 167, 194, .45);
+  border-radius: 12px;
   box-shadow: 0 2px 8px rgba(74, 63, 85, .1);
+  overflow: hidden;
+}
+
+.student-name {
+  width: 100%;
+  min-height: 2.4rem;
+  padding: .4rem .55rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: 600 .85rem var(--font-body);
+  cursor: pointer;
+}
+
+.student-name:focus-visible {
+  outline: 3px solid var(--pink-deep);
+  outline-offset: -3px;
+}
+
+.student-info {
+  display: block;
+  padding: 0 .6rem .55rem;
+  color: var(--ink-soft);
+  font-size: .75rem;
+  line-height: 1.3;
+}
+
+.student-info[hidden] {
+  display: none;
 }
 
 /* ---------- footer ---------- */

@@ -1,7 +1,37 @@
-// ⚠️ REEMPLAZAR con los nombres reales del curso antes de publicar
+// Reemplazar nombres y descripciones con los datos reales antes de publicar.
 const PLACEHOLDER_STUDENTS = [
-  'Alumno 1', 'Alumna 2', 'Alumno 3', 'Alumna 4', 'Alumno 5',
-  'Alumna 6', 'Alumno 7', 'Alumna 8', 'Alumno 9', 'Alumna 10',
+  ['Alumno 1', 'Le gusta dibujar y compartir ideas con el curso.'],
+  ['Alumna 2', 'Disfruta leer y ayudar a sus compañeros.'],
+  ['Alumno 3', 'Le encanta la música y participar en los actos.'],
+  ['Alumna 4', 'Es creativa y siempre tiene una idea nueva.'],
+  ['Alumno 5', 'Disfruta los deportes y trabajar en equipo.'],
+  ['Alumna 6', 'Le gustan los animales y la naturaleza.'],
+  ['Alumno 7', 'Es curioso y disfruta aprender cosas nuevas.'],
+  ['Alumna 8', 'Le encanta cocinar y probar recetas.'],
+  ['Alumno 9', 'Disfruta los juegos y los desafíos.'],
+  ['Alumna 10', 'Le gusta bailar y llenar de alegría al curso.'],
+  ['Alumno 11', 'Disfruta construir y crear objetos.'],
+  ['Alumna 12', 'Le encanta escribir historias y cuentos.'],
+  ['Alumno 13', 'Es fan de las películas y las aventuras.'],
+  ['Alumna 14', 'Le gustan las manualidades y los colores.'],
+  ['Alumno 15', 'Disfruta correr y practicar distintos deportes.'],
+  ['Alumna 16', 'Le encanta la fotografía y observar detalles.'],
+  ['Alumno 17', 'Disfruta resolver acertijos y problemas.'],
+  ['Alumna 18', 'Le gusta cantar y compartir canciones.'],
+  ['Alumno 19', 'Es amable y siempre está dispuesto a ayudar.'],
+  ['Alumna 20', 'Disfruta la ciencia y hacer experimentos.'],
+  ['Alumno 21', 'Le gustan los videojuegos y la tecnología.'],
+  ['Alumna 22', 'Le encanta cuidar las plantas.'],
+  ['Alumno 23', 'Disfruta dibujar personajes y cómics.'],
+  ['Alumna 24', 'Le gusta aprender idiomas y conocer culturas.'],
+  ['Alumno 25', 'Es alegre y disfruta trabajar en grupo.'],
+  ['Alumna 26', 'Le encantan los libros y las historias fantásticas.'],
+  ['Alumno 27', 'Disfruta andar en bicicleta y explorar.'],
+  ['Alumna 28', 'Le gusta la danza y la expresión artística.'],
+  ['Alumno 29', 'Es observador y disfruta descubrir cosas.'],
+  ['Alumna 30', 'Le encanta jugar al aire libre.'],
+  ['Alumno 31', 'Disfruta imaginar proyectos y llevarlos a cabo.'],
+  ['Alumna 32', 'Le gusta compartir momentos y risas con el curso.'],
 ];
 
 // Las 19 imágenes de la decoración (Monsters, Inc. / Ratatouille), repartidas
@@ -55,9 +85,29 @@ let lightboxIndex = 0;
 
 function initStudents() {
   const list = document.getElementById('students-list');
-  PLACEHOLDER_STUDENTS.forEach((name) => {
+  PLACEHOLDER_STUDENTS.forEach(([name, bio], index) => {
     const li = document.createElement('li');
-    li.textContent = name;
+    const button = document.createElement('button');
+    const info = document.createElement('span');
+
+    button.type = 'button';
+    button.className = 'student-name';
+    button.textContent = name;
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-controls', `student-info-${index}`);
+
+    info.id = `student-info-${index}`;
+    info.className = 'student-info';
+    info.textContent = bio;
+    info.hidden = true;
+
+    button.addEventListener('click', () => {
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!isOpen));
+      info.hidden = isOpen;
+    });
+
+    li.append(button, info);
     list.appendChild(li);
   });
 }
